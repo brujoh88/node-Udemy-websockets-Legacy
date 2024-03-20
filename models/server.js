@@ -31,13 +31,12 @@ class Server {
     }
 
     sockets(){
-        this.io.on('connection', socket =>{
-            console.log('Cliente conectado ', socket.id);
+        this.io.on('connection', socket =>{            
             socket.on('disconnect',()=>{
                 console.log('Cliente desconectado ', socket.id);
             })
             socket.on('enviar-mensaje',(payload)=>{
-                console.log(payload);
+                this.io.emit('aleta-desde-server', payload)
             })
         })
     }
