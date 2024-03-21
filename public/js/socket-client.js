@@ -29,5 +29,7 @@ btnEnviar.addEventListener('click', ()=>{
         id: '123asd',
         fecha: new Date().getTime()
     }
-    socket.emit('enviar-mensaje', payload)
+    socket.emit('enviar-mensaje', payload, (id)=>{
+        console.log('Desde el Server' ,id);
+    })
 })
